@@ -3,7 +3,7 @@ import { R as ROUTE_TYPE_HEADER, j as REROUTE_DIRECTIVE_HEADER, k as decryptStri
 import { s as appendForwardSlash, t as joinPaths, A as AstroError, u as i18nNoLocaleFoundInPath, R as ResponseSentError, v as MiddlewareNoDataOrNextCalled, w as MiddlewareNotAResponse, G as GetStaticPathsRequired, x as InvalidGetStaticPathsReturn, y as InvalidGetStaticPathsEntry, z as GetStaticPathsExpectedParams, B as GetStaticPathsInvalidRouteParam, C as trimSlashes, P as PageNumberParamNotFound, H as NoMatchingStaticPathFound, J as PrerenderDynamicEndpointPathCollide, K as ReservedSlotName, L as removeTrailingForwardSlash, Q as RewriteWithBodyUsed, S as LocalsNotAnObject, T as PrerenderClientAddressNotAvailable, U as ClientAddressNotAvailable, V as StaticClientAddressNotAvailable, W as AstroResponseHeadersReassigned, X as fileExtension, Y as slash, Z as prependForwardSlash } from './astro/assets-service_CufK5ean.mjs';
 import { serialize, parse } from 'cookie';
 import { bold, red, yellow, dim, blue } from 'kleur/colors';
-import { g as getActionQueryString, d as deserializeActionResult, e as ensure404Route, D as DEFAULT_404_ROUTE, a as default404Instance, N as NOOP_MIDDLEWARE_FN } from './astro-designed-error-pages_Db2eOCuK.mjs';
+import { g as getActionQueryString, d as deserializeActionResult, e as ensure404Route, D as DEFAULT_404_ROUTE, a as default404Instance, N as NOOP_MIDDLEWARE_FN } from './astro-designed-error-pages_bs_-ESJt.mjs';
 import 'es-module-lexer';
 import 'clsx';
 import 'fast-glob';
