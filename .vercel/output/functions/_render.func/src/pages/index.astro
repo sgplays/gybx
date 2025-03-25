@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLatestPosts, getRecentComments, getRecentLikes } from '../lib/posts';
+
+const latestPosts = await getLatestPosts();
+const recentComments = await getRecentComments();
+const recentLikes = await getRecentLikes();
+---
+
+<Layout title="홈">
+  <section class="mb-12">
+    <h1 class="text-4xl font-bold text-primary mb-6">공유박스에 오신 것을 환영합니다</h1>
+    <p class="text-lg text-secondary mb-8">
+      트렌디한 집정리와 인테리어 팁으로 당신의 공간을 더 특별하게 만들어보세요.
+    </p>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-bold text-primary mb-6">최신 포스트</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {latestPosts.map(post => (
+        <article class="bg-white rounded-lg shadow-md overflow-hidden">
+          <img src={post.coverImage} alt={post.title} class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <div class="flex gap-2 mb-2">
+              {post.tags.map(tag => (
+                <span class="text-sm text-accent bg-accent/10 px-2 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h3 class="text-xl font-bold text-primary mb-2">
+              <a href={`/posts/${post.slug}`} class="hover:text-accent">
+                {post.title}
+              </a>
+            </h3>
+            <p class="text-secondary mb-4">{post.excerpt}</p>
+            <div class="flex justify-between items-center text-sm text-gray-500">
+              <span>{post.date}</span>
+              <div class="flex gap-2">
+                <button class="hover:text-accent">좋아요</button>
+                <button class="hover:text-accent">공유하기</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <section class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-bold text-primary mb-4">최근 댓글</h2>
+      <div class="space-y-4">
+        {recentComments.map(comment => (
+          <div class="border-b border-gray-100 last:border-0 pb-4 last:pb-0">
+            <div class="flex justify-between items-start mb-2">
+              <span class="font-medium text-secondary">{comment.author}</span>
+              <span class="text-sm text-gray-500">{comment.date}</span>
+            </div>
+            <p class="text-secondary mb-2">{comment.content}</p>
+            <a href={`/posts/${comment.postId}`} class="text-sm text-accent hover:underline">
+              {comment.postTitle}
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-bold text-primary mb-4">최근 좋아요</h2>
+      <div class="space-y-4">
+        {recentLikes.map(like => (
+          <div class="border-b border-gray-100 last:border-0 pb-4 last:pb-0">
+            <div class="flex justify-between items-start">
+              <a href={`/posts/${like.postId}`} class="text-secondary hover:text-accent">
+                {like.postTitle}
+              </a>
+              <span class="text-sm text-gray-500">{like.date}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
